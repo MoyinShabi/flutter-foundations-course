@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/src/localization/string_hardcoded.dart';
+import 'package:ecommerce_app/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 
 import 'localization/string_hardcoded.dart';
@@ -10,10 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      routerConfig: goRouter,
       debugShowCheckedModeBanner: false,
       restorationScopeId: 'app',
-      routerConfig: goRouter,
-      // * The home page of the app
       onGenerateTitle: (BuildContext context) => 'My Shop'.hardcoded,
       theme: ThemeData(
         primarySwatch: Colors.grey,
