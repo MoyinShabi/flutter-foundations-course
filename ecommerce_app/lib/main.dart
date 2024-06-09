@@ -13,6 +13,7 @@ void main() async {
   // * https://docs.flutter.dev/testing/errors
   registerErrorHandlers();
   // * Entry point of the app
+  GoRouter.optionURLReflectsImperativeAPIs = true;
   runApp(const MyApp());
 }
 
