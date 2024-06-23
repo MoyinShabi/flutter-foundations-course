@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:ecommerce_app/src/constants/app_sizes.dart';
 import 'package:go_router/go_router.dart';
 
