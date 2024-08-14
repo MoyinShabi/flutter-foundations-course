@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:ecommerce_app/src/constants/test_products.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FakeProductsRepository {
@@ -49,7 +48,7 @@ final productsListFutureProvider =
 });
 
 final productProvider =
-    StreamProvider.family.autoDispose<Product?, String>((ref, id) {
+    StreamProvider.autoDispose.family<Product?, String>((ref, id) {
   final productsRepository = ref.watch(productsRepositoryProvider);
   return productsRepository.watchProduct(id);
 });
