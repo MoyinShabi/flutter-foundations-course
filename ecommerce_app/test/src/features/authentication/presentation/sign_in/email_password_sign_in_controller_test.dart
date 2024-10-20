@@ -90,6 +90,7 @@ void main() {
                   formType: EmailPasswordSignInFormType.signIn,
                   value: const AsyncLoading<void>(),
                 ),
+                // using predicate since we can't match the stack trace
                 predicate<EmailPasswordSignInState>(
                   (state) {
                     expect(state.formType, EmailPasswordSignInFormType.signIn);
