@@ -1,6 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:ecommerce_app/src/features/authentication/presentation/sign_in/string_validators.dart';
 import 'package:ecommerce_app/src/localization/string_hardcoded.dart';
 
@@ -46,7 +44,9 @@ class EmailPasswordSignInState with EmailAndPasswordValidators {
   bool operator ==(covariant EmailPasswordSignInState other) {
     if (identical(this, other)) return true;
 
-    return other.formType == formType && other.value == value;
+    return other is EmailPasswordSignInState &&
+        other.formType == formType &&
+        other.value == value;
   }
 
   @override

@@ -5,10 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class EmailPasswordSignInController
     extends StateNotifier<EmailPasswordSignInState> {
   EmailPasswordSignInController({
-    required this.authRepository,
     required EmailPasswordSignInFormType formType,
+    required this.authRepository,
   }) : super(EmailPasswordSignInState(formType: formType));
-
   final FakeAuthRepository authRepository;
 
   Future<bool> submit(String email, String password) async {
@@ -18,7 +17,7 @@ class EmailPasswordSignInController
     return value.hasError == false;
   }
 
-  Future<void> _authenticate(String email, String password) async {
+  Future<void> _authenticate(String email, String password) {
     switch (state.formType) {
       case EmailPasswordSignInFormType.signIn:
         return authRepository.signInWithEmailAndPassword(email, password);
@@ -32,11 +31,12 @@ class EmailPasswordSignInController
   }
 }
 
-final emailPasswordSignInProvider = StateNotifierProvider.autoDispose.family<
-    EmailPasswordSignInController,
-    EmailPasswordSignInState,
-    EmailPasswordSignInFormType>((ref, formType) {
+final emailPasswordSignInControllerProvider = StateNotifierProvider.autoDispose
+    .family<EmailPasswordSignInController, EmailPasswordSignInState,
+        EmailPasswordSignInFormType>((ref, formType) {
   final authRepository = ref.watch(authRepositoryProvider);
   return EmailPasswordSignInController(
-      authRepository: authRepository, formType: formType);
+    authRepository: authRepository,
+    formType: formType,
+  );
 });
